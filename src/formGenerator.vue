@@ -31,6 +31,8 @@ export default {
 				return {
 					validateAfterLoad: false,
 					validateAfterChanged: false,
+					validateDisabled: false,
+					validateReadonly: false,
 					fieldIdPrefix: "",
 					validateAsync: false,
 					validationErrorClass: "error",

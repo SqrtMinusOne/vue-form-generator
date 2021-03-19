@@ -74,10 +74,12 @@ export default {
 		validate(calledParent) {
 			this.clearValidationErrors();
 			let validateAsync = objGet(this.formOptions, "validateAsync", false);
+			let validateDisabled = objGet(this.formOptions, "validateDisabled", false);
+			let validateReadonly = objGet(this.formOptions, "validateReadonly", false);
 
 			let results = [];
 
-			if (this.schema.validator && this.schema.readonly !== true && this.disabled !== true) {
+			if (this.schema.validator && (this.schema.readonly !== true || validateReadonly) && (this.disabled !== true || validateDisabled)) {
 				let validators = [];
 				if (!isArray(this.schema.validator)) {
 					validators.push(convertValidator(this.schema.validator).bind(this));
